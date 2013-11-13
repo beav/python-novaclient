@@ -1635,6 +1635,12 @@ class FakeHTTPClient(base_client.HTTPClient):
                            'hypervisor_hostname': "hyper1",
                            'uptime': "fake uptime"}})
 
+    def get_os_hypervisors_1234_sysuuid(self, **kw):
+        return (200, {}, {'hypervisor':
+                          {'id': 1234,
+                           'hypervisor_hostname': "hyper1",
+                           'sysuuid': "fake uuid"}})
+
     def get_os_networks(self, **kw):
         return (200, {}, {'networks': [{"label": "1", "cidr": "10.0.0.0/24",
                 'project_id': '4ffc664c198e435e9853f2538fbcd7a7',

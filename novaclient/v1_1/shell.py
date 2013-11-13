@@ -2956,6 +2956,17 @@ def do_hypervisor_uptime(cs, args):
     # Output the uptime information
     utils.print_dict(hyper._info.copy())
 
+@utils.arg('hypervisor',
+    metavar='<hypervisor>',
+    help='Name or ID of the hypervisor to show the system uuid of.')
+def do_hypervisor_sysuuid(cs, args):
+    """Display the system uuid of the specified hypervisor."""
+    hyper = _find_hypervisor(cs, args.hypervisor)
+    hyper = cs.hypervisors.sysuuid(hyper)
+
+    # Output the system uuid information
+    utils.print_dict(hyper._info.copy())
+
 
 def do_hypervisor_stats(cs, args):
     """Get hypervisor statistics over all compute nodes."""

@@ -65,6 +65,13 @@ class HypervisorManager(base.ManagerWithFind):
         return self._get("/os-hypervisors/%s/uptime" % base.getid(hypervisor),
                          "hypervisor")
 
+    def sysuuid(self, hypervisor):
+        """
+        Get the system uuid for a specific hypervisor.
+        """
+        return self._get("/os-hypervisors/%s/sysuuid" % base.getid(hypervisor),
+                         "hypervisor")
+
     def statistics(self):
         """
         Get hypervisor statistics over all compute nodes.

@@ -148,6 +148,17 @@ class HypervisorsTest(utils.TestCase):
 
         self.compare_to_expected(expected, result)
 
+    def test_hypervisor_sysuuid(self):
+        expected = dict(
+            id=1234,
+            hypervisor_hostname="hyper1",
+            sysuuid="fake uuid")
+
+        result = cs.hypervisors.sysuuid(1234)
+        cs.assert_called('GET', '/os-hypervisors/1234/sysuuid')
+
+        self.compare_to_expected(expected, result)
+
     def test_hypervisor_statistics(self):
         expected = dict(
             count=2,
